@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>使用WinWebMail的WebMail功能</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style type="text/css">
+<!--
+p		{font-family:宋体,MS SONG,SimSun,tahoma,sans-serif;font-size:9pt;line-height=18px;}
+body	{font-family:宋体,MS SONG,SimSun,tahoma,sans-serif;font-size:9pt;line-height=18px;}
+table	{font-family:宋体,MS SONG,SimSun,tahoma,sans-serif;font-size:9pt;line-height=18px;}
+.titlebsf	{font-family:宋体,MS SONG,SimSun,tahoma,sans-serif;font-size:11pt;color:#000099;line-height=18px;}
+.bsf	{font-family:宋体,MS SONG,SimSun,tahoma,sans-serif;font-size:9pt;color:#000099;line-height=18px;}
+.nmsf	{font-family:宋体,MS SONG,SimSun,tahoma,sans-serif;font-size:9pt;line-height=18px;}
+.linesmall	{font-family:宋体,MS SONG,SimSun,tahoma,sans-serif;font-size:9pt;line-height=12px;}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF">
+<table width="100%" border="0">
+  <tr> 
+    <td align="center">
+        <img src="win.gif"><br><br><br>
+    </td>
+  </tr>
+  <tr> 
+    <td align="center"> <b class="titlebsf">在IIS 5.0中设置WebMail</b><br>
+      <hr size="1">
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p><span class="bsf"><b>操作过程</b>（IIS 5.0）</span>：<br>
+        　　1. 首先打开“Internet 服务管理器”，并在“默认Web站点”下新建一个名为“WinWebMail”的虚拟目录。（见圈1）<br>
+        　　2. 将该虚拟目录的实际路径指向您安装 WinWebMail 路径下的 \Web 子目录。您将可以在右边的文件列表中见到如图所示的文件。（global.asa文件必须位于此虚拟目录下）<br>
+        　　3. 打开IE浏览器，然后在地址栏中输入： http://<font color="#FF3333">localhost</font>/WinWebMail/default.asp 
+        即可以登录WebMail。（注意：<font color="#FF3333">localhost</font>部分也可以使用服务器的IP地址或者是有效域名） 
+      </p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center"> 
+        <p><img src="iis.gif"><br>
+          <br>
+          <br>
+        </p>
+      </div>
+    </td>
+  </tr>
+  <tr> 
+    <td><b class="bsf">注意事项</b>：<br>
+      1. <b>权限设置</b>：<br>
+      <table width="100%" border="1" bordercolorlight="#888888" bordercolordark="#FFFFFF" cellpadding="0" cellspacing="0">
+        <tr height="30"> 
+          <td colspan="3" height="35"> <img src="aw.gif" border="0"> 例如 WinWebMail 
+            被安装在 D:\WinWebMail 目录下。<br>
+            <img src="aw.gif" border="0"> 权限设置完成后，需要重启一下IIS以使设置生效。</td>
+        </tr>
+        <tr valign="top"> 
+          <td width="46%" height="20"> D:\WinWebMail (及其所有子目录)</td>
+          <td nowrap width="31%"> Users 或 Everyone</td>
+          <td nowrap width="23%"> 完全控制</td>
+        </tr>
+        <tr valign="top"> 
+          <td width="46%" height="20"> D:\ 根目录 <br>
+          </td>
+          <td nowrap width="31%"> Users</td>
+          <td nowrap width="23%"> 读取</td>
+        </tr>
+      </table>
+      <br>
+      2. 当您试图在一台服务器的IIS中创建一个以上的WebMail虚拟目录（或站点）时，必须确保只有一个global.asa文件被运行。 </td>
+  </tr>
+</table>
+<br>
+</body>
+</html>

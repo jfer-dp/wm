@@ -1,0 +1,31 @@
+<SCRIPT LANGUAGE=VBScript RUNAT=Server> 
+	Sub Application_OnStart
+		Application.Lock
+			Set Application("em") = Server.CreateObject("easymail.Users")
+			Application("em").SessionTimeout = Session.Timeout
+		Application.Unlock
+	End Sub
+
+
+	Sub Application_OnEnd
+		Application.Lock
+			Set Application("em") = nothing
+		Application.Unlock
+	End Sub
+
+
+	Sub Session_OnStart
+		On Error Resume Next
+		Err.Clear
+		Application("em").GetLastErr
+
+		if Err.Number > 0 then
+			Application.Lock
+				Set Application("em") = Server.CreateObject("easymail.Users")
+				Application("em").SessionTimeout = Session.Timeout
+			Application.Unlock
+
+			Err.Clear
+		end if
+	End Sub
+</SCRIPT>
